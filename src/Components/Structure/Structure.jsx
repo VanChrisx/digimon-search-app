@@ -1,21 +1,27 @@
 import React from "react";
-import useDigimons from "../useDigimons/useDigimons";
-import { DigimonsContainer } from "../Digimons/DigimonsContainer";
+import { Digimons } from "../Digimons/Digimons";
+import { useDigimons } from "../../hooks/useDigimons/useDigimons";
+import useSearch from "../../hooks/useSearch/useSearch";
+import Title from "../Title/Title";
+import SearchBarContainer from "../SearchBar/SearchBarContainer";
 
 const Structure = () => {
-  const { digimons } = useDigimons();
+  const { query, filter, setFilter, setQuery } = useSearch();
+  const { digimonsData, getDigimons } = useDigimons({ query, filter });
 
   return (
     <div>
       <header>
-        <h1>digimons</h1>
-        <form className="form">
-          <input placeholder="Agumon,gabumon, metalgarurumon..." />
-          <button type="submit">Search</button>
-        </form>
+        <Title />
+        <SearchBarContainer
+          getDigimons={getDigimons}
+          setFilter={setFilter}
+          setQuery={setQuery}
+        />
       </header>
+
       <main>
-        <DigimonsContainer digi={digimons} />
+        <Digimons digimonsData={digimonsData} />
       </main>
     </div>
   );
