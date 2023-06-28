@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/digimon-search-app/static/css/main.ba09ff78.css",
+    "main.js": "/digimon-search-app/static/js/main.205de4d4.js",
+    "index.html": "/digimon-search-app/index.html",
+    "main.ba09ff78.css.map": "/digimon-search-app/static/css/main.ba09ff78.css.map",
+    "main.205de4d4.js.map": "/digimon-search-app/static/js/main.205de4d4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ba09ff78.css",
+    "static/js/main.205de4d4.js"
+  ]
+}
