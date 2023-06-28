@@ -99,6 +99,7 @@ select:focus {
   background-color: var(--color-primary);
   border-radius: 1rem;
   color: #222;
+
   outline: none;
 }
 select option {
