@@ -1,27 +1,23 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { searchDigimon } from "../searchDigimon/searchDigimon";
 
 export const useDigimons = ({ filter, query }) => {
-  const [responseDigimon, setResponseDigimon] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [digimonsData, setDigimonsData] = useState([]);
 
-  const digimonsData = responseDigimon;
-
-  const mappedDigimons = digimonsData?.map((digi) => ({
-    title: digi.name,
-    level: digi.level,
-    img: digi.img,
-  }));
-
-  const getDigimons = () => {
-    if (query && filter) {
-      fetch(`https://digimon-api.vercel.app/api/digimon/${filter}/${query}`)
-        .then((res) => res.json())
-        .then((json) => {
-          setResponseDigimon(json);
-        });
-    } else {
-      <h1>No hay peliculas para mostrar</h1>;
+  const getDigimons = useCallback(async ({ filter, query }) => {
+    try {
+      setLoading(true);
+      setError(null);
+      const newDigimons = await searchDigimon({ filter, query });
+      setDigimonsData(newDigimons);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setLoading(false);
     }
-  };
+  }, []);
 
-  return { digimonsData: mappedDigimons, getDigimons };
+  return { digimonsData, getDigimons, error, loading };
 };

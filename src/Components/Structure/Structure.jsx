@@ -7,23 +7,42 @@ import SearchBarContainer from "../SearchBar/SearchBarContainer";
 
 const Structure = () => {
   const { query, filter, setFilter, setQuery } = useSearch();
-  const { digimonsData, getDigimons } = useDigimons({ query, filter });
+  const { digimonsData, getDigimons, error, loading } = useDigimons({
+    query,
+    filter,
+  });
 
   return (
-    <div>
+    <section>
       <header>
-        <Title />
+        <Title title="Digimon Search" />
         <SearchBarContainer
           getDigimons={getDigimons}
           setFilter={setFilter}
           setQuery={setQuery}
+          query={query}
+          filter={filter}
         />
+        <p
+          style={{
+            textAlign: "center",
+            marginBottom: "2%",
+            color: "var(--color-white)",
+          }}>
+          Levels: Fresh,Training, Rookie, Mega, Champion, Armor, Ultimate.
+        </p>
       </header>
 
       <main>
-        <Digimons digimonsData={digimonsData} />
+        {loading ? (
+          <h1>Cargando ...</h1>
+        ) : error ? (
+          <Title title={error} />
+        ) : (
+          <Digimons digimonsData={digimonsData} />
+        )}
       </main>
-    </div>
+    </section>
   );
 };
 

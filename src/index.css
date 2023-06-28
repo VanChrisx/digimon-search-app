@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --color-bg: #131391;
+  --color-bg-variant: #5353eb;
+  --color-primary: #fd8916;
+  --color-primary-variant: #ffd68b;
+  --color-secondary: #ffa600;
+  --color-white: #fff;
+  --color-light: rgba(253, 181, 130, 0.6);
+
+  --transition: all 400ms ease;
+
+  --container-width-lg: 74%;
+  --container-width-md: 80%;
+  --container-width-sm: 90%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--color-bg);
+  line-height: 1.7;
+  background-image: url("../public/bg-texture.png");
+}
+
+Section {
+  width: var(--container-width-lg);
+  padding: 2rem;
+  margin: 5% auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2rem;
+  width: 60%;
+  align-items: center;
+  background-color: var(--color-primary);
+}
+
+h2,
+h1 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 3rem;
+  color: var(--color-white);
+}
+h2 {
+  font-size: 2rem;
+}
+
+.btn {
+  display: block;
+  width: max-content;
+  padding: 1rem 3.5rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  height: 60px;
+  color: var(--color-primary-variant);
+  background-color: var(--color-bg-variant);
+}
+
+img {
+  display: block;
+  width: 90%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+select,
+input {
+  background-color: transparent;
+  border: 1px solid var(--color-primary-variant);
+  border-radius: 1rem;
+  color: var(--color-white);
+  font-size: 1.5rem;
+}
+
+select:focus {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+select:focus {
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  background-color: var(--color-primary);
+  border-radius: 1rem;
+  color: #222;
+  outline: none;
+}
+select option {
+  border-color: var(--color-primary-variant);
+}
+
+@media screen and (max-width: 1500px) {
+  section {
+    width: var(--container-width-md);
+  }
+}
+
+@media screen and (max-width: 992px) {
+  section {
+    width: var(--container-width-sm);
+  }
+}

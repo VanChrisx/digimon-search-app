@@ -1,18 +1,26 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 
-const SearchBarContainer = ({ getDigimons, setFilter, setQuery }) => {
+const SearchBarContainer = ({
+  getDigimons,
+  setFilter,
+  setQuery,
+  query,
+  filter,
+}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    getDigimons();
+    getDigimons({ query, filter });
   };
 
   const handleChangeName = (event) => {
-    setQuery(event.target.value);
+    const newName = event.target.value;
+    setQuery(newName);
   };
 
   const handleChangeFilter = (event) => {
-    setFilter(event.target.value);
+    const newFilter = event.target.value;
+    setFilter(newFilter);
   };
 
   return (
